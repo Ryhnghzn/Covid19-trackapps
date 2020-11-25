@@ -1,0 +1,73 @@
+<ion-header>
+
+</ion-header>
+<ion-content class="no-scroll">
+
+
+  <div class=" ion-padding-start">
+    <br>
+
+    <h1 class="animated slideInLeft" style="color : #000000; margin-top: 0px;">
+      Let's sign you in.
+    </h1>
+
+    <h1 class="animated slideInRight delay-1s" style="font-weight: bold;">
+      TestHelloKreasi </h1>
+
+    <div style="text-align: center;">
+      <img class="animated fadeIn" src="../../assets/gif/login-screen.gif">
+
+    </div>
+
+
+  </div>
+
+
+  <div class="animated slideInUp  ion-padding div-atas" style="text-align : center">
+
+    <ion-item (click)="itemClick(1)" class="{{class_item_1}}">
+      <ion-label position="floating">
+        Login Sebagai
+      </ion-label>
+      <ion-select [(ngModel)]="login_as">
+        <ion-select-option value="1">
+          <p>Admin</p>
+        </ion-select-option>
+        <ion-select-option value="0">
+          <p>User</p>
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+
+    <ion-item class="{{class_item_2}}">
+      <ion-label position="stacked">
+        Nomor Telepon
+      </ion-label>
+
+      <div slot="start" style="display:inline-block">
+
+        <h5>+62</h5>
+
+      </div>
+      <ion-input type="tel" (click)="itemClick(2)" [(ngModel)]="no_telp" placeholder="Ex : 8123456789"></ion-input>
+    </ion-item>
+
+
+    <br>
+
+
+
+    <br>
+    <div style="text-align: center;">
+      <div id="recaptcha-container"></div>
+      <button class="button2" (click)="loginVerif()">Login</button>
+
+    </div>
+
+
+  </div>
+
+
+
+</ion-content>

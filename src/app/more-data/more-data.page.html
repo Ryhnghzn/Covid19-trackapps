@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>All Data</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list >
+    <div  *ngIf="!items" style="text-align: center;" class="ion-padding">
+      <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+      <br>
+      <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+      <br>
+      <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+      <br>
+      <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+      <br>
+      <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+      <br>
+      <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+    </div>
+    <ion-item-sliding *ngFor="let item of items" class="ion-padding">
+
+      <ion-item lines="none" color="transparent" class="item-1">
+        <ion-avatar class="avatar animated fadeIn" slot="start">
+          <img *ngIf="item.image" [src]="'data:image/jpeg;base64,' + item.image">
+          <img *ngIf="!item.image" src="https://www.flaticon.com/svg/static/icons/svg/3165/3165217.svg">
+
+        </ion-avatar>
+
+        <div style="margin-left: 10px;" (click)="detailClicked(item.id)">
+        
+          <h3>{{item.name}}</h3>
+          <p style="color: rgb(190, 190, 190);">{{item.age}} years</p>
+          <p>{{item.location}}</p>
+
+
+        </div>
+        <ion-icon  slot="end" name="chevron-back-outline"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end" class="ion-padding">
+       
+        <button (click)="deleteClicked(item.id)" class="button-slide" color="danger">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+
+
+    </ion-item-sliding>
+
+  </ion-list>
+  
+
+</ion-content>

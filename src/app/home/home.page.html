@@ -1,0 +1,113 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Test Hello Kreasi
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="card-top">
+
+    
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="div-top ion-padding">
+    <div class="div-inner-top ion-padding">
+      <h1 class="text1 animated slideInDown">Today, <ion-icon class="animated bounceIn" name="information-circle" (click)="infoClick()" style="color: rgb(252, 252, 252)"></ion-icon></h1>
+
+      <h3 style="font-weight: bold;" class="text1 animated slideInRight ">{{today_date | date:'dd MMMM yyyy'}}</h3>
+      <h3 class="text1 animated slideInRight ">Covid 19 Cases in Indonesia </h3>
+  
+    </div>
+   
+  </div>
+
+  <ion-fab class="btn-fab animated bounceIn" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-label>Add Data</ion-label>
+
+    <ion-fab-button color="light" [routerLink]="['/add-data']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <!-- <ion-button (click)="testData()"> Test</ion-button> -->
+
+  <div class="div-btm animated slideInUp">
+    <ion-card class="welcome-card">
+      <ion-card-header style="text-align: center;">
+        <ion-card-title>All Covid Cases</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+
+        <canvas #pieChart></canvas>
+
+
+      </ion-card-content>
+
+    </ion-card>
+
+
+    <div scrollY="true" class="div-scroll">
+      <ion-item  >
+        <h1 slot="start">3 Latest Data</h1>
+        <div slot="end">
+          <button  [routerLink]="['/more-data']"  class="btn-2 animated bounceIn delay-1s" >
+              More Data 
+              <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>     
+  
+          </button>
+        
+          </div>
+      </ion-item>
+      
+      <ion-list>
+        <div  *ngIf="!items" style="text-align: center;" class="ion-padding">
+          <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+
+        </div>
+        <ion-item-sliding *ngFor="let item of items" class="ion-padding">
+
+          <ion-item lines="none" color="transparent" class="item-1">
+            <ion-avatar class="avatar animated fadeIn" slot="start"  (click)="detailClicked(item.id)">
+              <img *ngIf="item.image" [src]="'data:image/jpeg;base64,' + item.image">
+              <img *ngIf="!item.image" src="https://www.flaticon.com/svg/static/icons/svg/3165/3165217.svg">
+
+            </ion-avatar>
+
+            <div style="margin-left: 10px;" (click)="detailClicked(item.id)">
+            
+              <h3>{{item.name}}</h3>
+              <p style="color: rgb(190, 190, 190);">{{item.age}} years</p>
+              <p>{{item.location}}</p>
+
+
+            </div>
+            <ion-icon  slot="end" name="chevron-back-outline"></ion-icon>
+          </ion-item>
+          <ion-item-options side="end" class="ion-padding">
+           
+            <button (click)="deleteClicked(item.id)" class="button-slide" color="danger">
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </button>
+          </ion-item-options>
+
+
+        </ion-item-sliding>
+
+      </ion-list>
+    </div>
+    
+  </div>
+
+
+
+
+</ion-content>

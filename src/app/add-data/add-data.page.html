@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>Add Data</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content style="text-align: center;">
+
+  <div class="ion-padding">
+    <p  [hidden]="image1" style="color: #fff;" >No photo available.</p>
+    <img class="img" [hidden]="!image1" [src]="image1">
+
+
+    <ion-button (click)="cameraClick()">
+      <ion-icon name="camera"></ion-icon> Click here to update photo
+    </ion-button>
+  </div>
+
+  <div class="div-btm ion-padding">
+    <br>
+    
+
+
+  <ion-item>
+    <ion-label position="stacked">
+      Name
+    </ion-label>
+    <ion-input [(ngModel)]="post.name" placeholder="Input name here..."></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="stacked">
+      Age
+    </ion-label>
+    <ion-input [(ngModel)]="post.age" max="99" type="number" placeholder="Input your age here..."></ion-input>
+    <h3 slot="end">Years</h3>
+  </ion-item>
+
+
+
+  <ion-item>
+    <ion-label position="stacked">
+      Address
+    </ion-label>
+    <ion-textarea autoGrow="true" [(ngModel)]="post.address" type="string"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Gender</ion-label>
+    <ion-select [(ngModel)]="post.gender" placeholder="Choose gender">
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Location</ion-label>
+    <ion-select [(ngModel)]="post.location" placeholder="Choose location">
+      <ion-select-option value="jakarta">Jakarta</ion-select-option>
+      <ion-select-option value="bekasi">Bekasi</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+
+
+
+
+
+
+  <div class="ion-padding">
+
+    <button class="button-submit" (click)="submitClicked()">Add Data</button>
+  </div>
+
+</div>
+
+</ion-content>
